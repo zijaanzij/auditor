@@ -29,4 +29,4 @@ Element D:\simple_http_server\src\test.html was changed
 
 ### Compatibility
 
-Python 3
+Python 2 / Python 3
