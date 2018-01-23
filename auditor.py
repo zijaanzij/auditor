@@ -5,6 +5,8 @@ import datetime
 
 import sys
 
+VERSION = 1.0
+
 
 def error(*args, **kwargs):
     print("Error:", *args, file=sys.stderr, **kwargs)
@@ -12,6 +14,7 @@ def error(*args, **kwargs):
 
 
 def snap(args):
+
     if not os.path.exists(args.path):
         error('"{}" does not exists'.format(args.path))
 
@@ -58,10 +61,10 @@ def snap(args):
 
 def diff(args):
     if not os.path.exists(args.snap1):
-        error('"{}" does not exists'.format(args.snap1))
+        error('"{}" does not exist'.format(args.snap1))
 
     if not os.path.exists(args.snap2):
-        error('"{}" does not exists'.format(args.snap2))
+        error('"{}" does not exist'.format(args.snap2))
 
     try:
         with open(args.snap1, "r") as snap1_file:
@@ -111,6 +114,7 @@ def main():
     parser = argparse.ArgumentParser(description='When called with snap argument, saves the state of the file system '
                                                  'PATH as a json SNAP file which contains a list of named entries '
                                                  'with a metadata for each file entry')
+    parser.add_argument('-v', '--version', action='version', version=str(VERSION))
     subparsers = parser.add_subparsers(dest='action')
     subparsers.required = True
 
